@@ -1,0 +1,19 @@
+#+TITLE: 블로깅-with-org-mode
+#+LAYOUT: post
+#+jekyll_tags: jekyll org
+#+jekyll_categories: note
+#+DATE: 2024-10-11
+
+** git pages
+
+제 블로그는 git pages를 이용하여 간단하게 구성하였습니다. https://github.com/yizeng/jekyll-theme-simple-texture 이곳에서 현재 theme을 fork 받아서 사용하고 있구요. 사용하는데 한가지 아쉬운것이, 저는 간단한 메모를 하기위해 emacs org-mode를 사용하는데 지금 이 theme에서는 markdown의 형식으로만 파일을 받는다는것.., 개인적인 메모들은 org-mode로 작성하다가 블로깅을 위해 markdown형식으로 다시 작성하는건 너무 비효율적입니다...;
+
+** org to jekyll-md
+그래서 좀 찾아보았는데, 마침 제게 딱 필요한것이 있더군요, https://github.com/gonsie/ox-jekyll-md 이곳에서 확인하였습니다. org-mode로 파일을 작성한 후, 블로깅을 위한 markdown 형식으로 exporting해주는 emacs 설정입니다. 위 레포의 설정파일을 받은 후, 제 개인 emacs 설정에 해당 설정파일을 포함하도록 수정해주었습니다.
+
+** to do
+
+사용할때는 일단 org파일을 작성한 후 M-x org-jekyll-md-export-to-md로 export해줍니다. 이제는 좀 편히 블로깅을 할 수 있을거같은데, 게을러서 자주 쓸지는 모르겠네요. 블로깅 세팅과 관련해서는 앞으로 이런 개선사항이 남아있습니다.
+
+- 위 ox-jekyll-md 세팅은 자동으로 table of contents를 생성해주는데요. table of contents가 code-block으로 둘러쌓이고, code-block에서 hyperlink가 제대로 동작하고 있지 않습니다. 해서, 지금은 해당 세팅을 비활성화 시켜 두었습니다.
+- 현재 org파일은 gitignore에 올려놓아 제 repo에 올라가고 있지 않습니다. local환경에만 파일이 저장되고 있는데, 다른 환경에서 접속해서 블로깅을 하게 될 경우를 생각하면 별로 좋지 않은 상태입니다. repo의 최상위 _posts 밑에 md파일만 저장시키기위해 org파일을 올리지 않게 해두었는데, _orgs라는 폴더 아래에 org파일을 쭉 모아 저장시키도록, export를 하면 _posts밑으로 md파일이 떨어지도록 수정해주어야 합니다.
