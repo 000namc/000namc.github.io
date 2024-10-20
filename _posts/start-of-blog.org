@@ -13,7 +13,7 @@
 ** to do
 **** DONE 블로그 테마 fix
 **** DONE org-mode로 포스팅 할 수 있도록 구성
-**** DONE 블로그 포스트 제목에 prefix 추가 (카테고리 |) 
+**** DONE 블로그 포스트 제목에 prefix 추가 
 **** DONE ox-jekyll-md 의 파일 이름 규칙 수정
 **** TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결 
 **** TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결

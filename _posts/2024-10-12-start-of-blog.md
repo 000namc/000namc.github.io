@@ -10,7 +10,7 @@ tags:
 
 
 
-<a id="orga8c1943"></a>
+<a id="org82d6a28"></a>
 
 ## hello world,
 
@@ -21,7 +21,7 @@ tags:
 블로그를 좀 더 깔끔하게 정리하고 싶습니다. 아래 사항들을 천천히 업데이트해 나갈 예정입니다.
 
 
-<a id="org2f62d07"></a>
+<a id="org0c35bc3"></a>
 
 ## to do
 
@@ -29,7 +29,7 @@ tags:
 
 2.  DONE org-mode로 포스팅 할 수 있도록 구성
 
-3.  DONE 블로그 포스트 제목에 prefix 추가 (카테고리 |)
+3.  DONE 블로그 포스트 제목에 prefix 추가
 
 4.  DONE ox-jekyll-md 의 파일 이름 규칙 수정
 
