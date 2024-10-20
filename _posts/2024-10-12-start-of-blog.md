@@ -10,7 +10,7 @@ tags:
 
 
 
-<a id="org7900eb9"></a>
+<a id="orga8c1943"></a>
 
 ## hello world,
 
@@ -21,7 +21,7 @@ tags:
 블로그를 좀 더 깔끔하게 정리하고 싶습니다. 아래 사항들을 천천히 업데이트해 나갈 예정입니다.
 
 
-<a id="orge6460cb"></a>
+<a id="org2f62d07"></a>
 
 ## to do
 
@@ -29,10 +29,14 @@ tags:
 
 2.  DONE org-mode로 포스팅 할 수 있도록 구성
 
-3.  TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
+3.  DONE 블로그 포스트 제목에 prefix 추가 (카테고리 |)
 
-4.  TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
+4.  DONE ox-jekyll-md 의 파일 이름 규칙 수정
 
-5.  TODO 블로그 글 좌측에 table of contents 구성
+5.  TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
 
-6.  TODO 블로그 광고 붙이기
+6.  TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
+
+7.  TODO 블로그 글 좌측에 table of contents 구성
+
+8.  TODO 블로그 광고 붙이기

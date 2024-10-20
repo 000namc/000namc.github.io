@@ -10,14 +10,19 @@
     {% endif %}
 
     <li>
-        <a class="active internal" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% assign categories = post.categories[0] %}
+        <a class="active internal" href="{{ post.url | relative_url }}"> 
+            <span style="opacity: 0.5;">{{ categories }} | </span>
+            {{ post.title }}
+        </a>
         {% if post.last_updated %}
             <span title="{{ site.data.i18n[site.lang].last_updated }}: {{ post.last_updated | date: "%b %d, %Y" }}" class="date">{{ post.date | date: "%b %d, %Y" }}</span>
         {% else %}
             <span class="date">{{ post.date | date: "%b %d, %Y" }}</span>
         {% endif %}
     </li>
-
+    
+    
     {% if forloop.last %}</ul>{% endif %}
 
     {% assign current_year = {{this_year}} %}
