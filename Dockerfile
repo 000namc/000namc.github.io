@@ -1,6 +1,8 @@
 FROM ruby:3.0
 
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+RUN echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+RUN chmod 600 ~/.ssh/id_rsa
 
 RUN mkdir /app
 RUN mkdir /app/blog/
