@@ -10,3 +10,23 @@
 - 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
 
  
+** 논문 초록
+** (ResNet) Deep Residual Learning for Image Recognition
+이 연구에서는 더 깊은 신경망을 학습시키기 위해 residual learning framework를 제안합니다. ImageNet 데이터셋에서 최대 152층의 residual network를 구성하였다고 합니다. 이 모델은 3.57%의 error rate로 ILSVRC2015 에서 1위를 차지하였다고 합니다. 
+*** Introduction
+최근의 연구들에서 이미지 분류문제에서 네트워크의 깊이가 매우 중요하다는것이 밝혀 졌다고 설명합니다. 그냥 단순히 깊이만 구성하면 되는것일까 라고 하면 그렇지 않고, gradient vanishing/exploding 문제를 적절히 해결해야만 한다고 설명합니다. 이 문제는 깊이 구성하는 layer 중간중간에 정규화를 해주는것으로 해결된다고 말합니다. 이러한 상황에서 모델을 깊이 더 깊이 구성해나갔을때 degradation이 발생했다고 주장합니다. 적당한 수준의 깊이에서 더 깊이를 추가하는것은 train set 에서의 error rate를 오히려 증가시킨다는 것을 확인합니다. 이 논문에서는 이러한 degradation을 deep residual learning framework로 해결할 수 있다고 말합니다. 원하는 어떤 매핑을 H(x)라고 하면, H(x) - x 라는 항등함수와의 차이를 맞추도록 설계했다고 합니다. 만약 H(x)가 가장 단순한 항등함수 H(x) = x 라면, 그 잔차인 H(x) - x = 0 을 학습하는것이 더 단순할 것(weight들이 0이 되도록 학습하게 됨으로)이라는 아이디어 입니다. 이렇게 설계함으로써 layer를 쌓아감에 따라 x로부터 어떻게 변화해나가는지에 따른 잔차 만을 모델링해 나가게 만들 수 있게 된다고 주장합니다. 이러한 구성으로 네트워크를 더 깊이 구성함에 따른 문제가 발생하지 않고 더 높은 정확도를 얻어낼 수 있다고 말합니다.  
+*** Related Work
+*** Deep Residual Learning 
+**** Residual Learning
+H(x)를 몇개의 적층된 convolution layer가 맞춰야하는 기본 함수, x는 이 적층된 layer들의 입력값일때, 이 적층된 layer가 H(x)를 맞추도록 학습하는것보다 H(x) - x 를 학습하도록 하는것이 유리하다고 주장합니다. 아무런 변화도 없는 함수라고 한다면 항등 함수일태고, 조금의 변화가 있다고 하면 항등함수에서 조금의 변화가 주어지게 될 것임으로, H(x) - x라는 잔차 함수가 의미를 갖게되고 이는 적층된 layer의 마지막부분에 x를 더해주는것으로 단순하게 구현할 수 있다고 말합니다. 실제로 실험을 통해서도 각 layer를 거듭하면서 학습하게되는 잔차가 작음을 확인함으로써 이러한 설계가 의미가 있음을 확인했다고 합니다. 
+**** Identity Mapping by Shortcuts
+적층된 layer의 마지막부분에 x를 더해주는 구조를 shortcut connection 이라고 부릅니다. 
+**** Network Architectures
+이러한 구조가 의미가 있는지 확인하기위해 shortcut connection을 이용한 Residual Network와 그렇지않은 Plain Network를 구성하였다고 합니다. VGG network를 참조하여 shortcut connection 유무를 다르게하여 모델을 구성하였고 기존의 VGG보다 더 깊게, 34 개의 layer를 갖도록 구성하였다고 합니다. 
+**** Implementation
+가능한 다른 연구들의 기본 세팅을 참조하였다고 합니다. SGC optimizer를 활용하고 256 batch size를 적용하였다고 합니다. 0.0001의 weight decay와 0.9의 momentum을 적용하였다고 합니다. 
+*** Experiments 
+**** ImageNet Classification
+Plain Network와 비교하여 Residual Network에서만 layer를 더 깊게 구성하였을때 train error rate의 개선이 있다는점을 확인하였습니다. 또한 더 깊은 network를 구성하기위하여 bottleneck design을 제안합니다. 이는 적층된 convolution layer의 앞뒤에 1by1 convolution layer를 이용하여 channel을 압축하고 다시 확장하는 것으로 학습에 필요한 비용은 줄이면서 표현하는 channel은 유지할 수 있는 구조라고 설명합니다. 이러한 구조를 적용하여 최종적으로 50layer, 101layer, 152layer의 ResNet을 구성하였다고 합니다. 
+**** CIFAR-10 and Analysis
+**** Object Detection on PASCAL and MS COCO
