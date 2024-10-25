@@ -1,6 +1,6 @@
-#+TITLE: VGG 논문 리뷰
+#+TITLE: (VGG) Very Deep Convolutional Networks For Large-Scale Image Recognition 리뷰
 #+LAYOUT: post
-#+jekyll_tags: paper-review vision
+#+jekyll_tags: vision
 #+jekyll_categories: AI-Research
 #+DATE: 2024-10-21
 
@@ -10,8 +10,8 @@
 - 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
 
 
-** 논문 초록
 ** (VGG) Very Deep Convolutional Networks For Large-Scale Image Recognition
+*** Abstract
  VGG는 이미지 분류 작업에서 convolution network의 깊이가 정확도에 크게 영향을 줌을 밝힌 연구입니다. 이 모델은 매우 작은 3by3 convolution filter를 사용하는것이 특징이며, network의 깊이를 16~19 까지 확장하였다고 합니다. 이러한 설계로 2014년 imagenet challenge 및 다른 밴치마크 데이터셋에서 state of art 인 성능을 보였다고 설명합니다.
 *** Introduction
  Convolutional Network는 최근 대규모 이미지 및 비디오 인식분야에서 큰 성공을 거두고 있다고 설명합니다. 그 아키텍쳐에 관해 smaller stride 그리고 smaller window size를 선택하는 등의 개선작업이 이어지고 있는데, 이 논문에서는 또 하나의 중요한 측면인 깊이를 다루겠다고 설명합니다. 다른 매개변수는 고정하고 네트워크의 깊이를 늘린 결과 ILSVRC-2014에서 State of the art 를 달성했다고 합니다.  

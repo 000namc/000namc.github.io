@@ -1,7 +1,7 @@
 #+TITLE: 블로그를 시작합니다.
 #+LAYOUT: post
 #+jekyll_tags: blog
-#+jekyll_categories: 일상
+#+jekyll_categories: Lifestyle
 #+DATE: 2024-10-12
 
 ** hello world,

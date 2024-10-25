@@ -1,6 +1,6 @@
-#+TITLE: GoogLeNet 논문 리뷰
+#+TITLE: (GoogLeNet) Going deeper with convolutions 리뷰
 #+LAYOUT: post
-#+jekyll_tags: paper-review vision
+#+jekyll_tags: vision
 #+jekyll_categories: AI-Research
 #+DATE: 2024-10-22
 
@@ -9,8 +9,8 @@
 - 논문 : https://arxiv.org/pdf/1409.4842
 - 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
 
-** 논문 초록
 ** (GoogLeNet) Going deeper with convolutions
+*** Abstract 
 GoogLeNet은 Inception 이라는 architecture를 제안하고 적용한 모델입니다. 이 구조의 주요 특징은 네트워크 내부의 계산 자원을 보다 효율적으로 활용할 수 있다는 점이라고 말합니다. 이러한 효율적인 구조를 이용해서 네트워크를 더욱 깊이 있게 설계할 수 있게 되었으며, 22개층으로 이루어진 이 네트워크는 분류와 탐지 모두에서 좋은 성능을 보였다고 설명합니다. 
 *** Introduction
 지난 3년간 CNN이 지속적으로 발전되고 있다고 언급하고 있습니다. 특히 주목할만한 점은, 단순이 더 큰 데이터셋 그리고 더 큰 모델을 사용해서 개선이 된것이 아니라 개선된 architecture의 결과라는 부분이라고 설명합니다. 이 논문에서 제안하는 GoogLeNet은 Alexnet보다 parameter수는 12배가 적게 구성되었다는 점을 강조하고 있습니다. 이 논문에서는 Inception 이라는 architecture를 제안하고 있고 그 의의가 어떻다라는 점을 설명합니다.  

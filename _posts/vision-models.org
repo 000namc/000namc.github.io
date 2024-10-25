@@ -1,7 +1,7 @@
 
 #+TITLE: Vision 분야 논문리뷰 및 구현
 #+LAYOUT: post
-#+jekyll_tags: paper-review vision
+#+jekyll_tags: vision
 #+jekyll_categories: AI-Research
 #+DATE: 2024-10-17
 

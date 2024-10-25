@@ -3,14 +3,14 @@ title: "블로그를 시작합니다."
 date: 2024-10-12
 layout: post
 categories: 
-- 일상
+- Lifestyle
 tags: 
 - blog
 ---
 
 
 
-<a id="org82d6a28"></a>
+<a id="orgabcd546"></a>
 
 ## hello world,
 
@@ -21,7 +21,7 @@ tags:
 블로그를 좀 더 깔끔하게 정리하고 싶습니다. 아래 사항들을 천천히 업데이트해 나갈 예정입니다.
 
 
-<a id="org0c35bc3"></a>
+<a id="org4c77e86"></a>
 
 ## to do
 

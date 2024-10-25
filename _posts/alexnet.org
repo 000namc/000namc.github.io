@@ -1,6 +1,6 @@
-#+TITLE: AlexNet 논문 리뷰
+#+TITLE: (AlexNet) ImageNet Classification with Deep Convolutional Neural Networks 리뷰
 #+LAYOUT: post
-#+jekyll_tags: paper-review vision
+#+jekyll_tags: vision
 #+jekyll_categories: AI-Research
 #+DATE: 2024-10-18
 
@@ -10,8 +10,8 @@
 - 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
 
 
-** 논문 초록
 ** (AlexNet) ImageNet Classification with Deep Convolutional Neural Networks
+*** Abstract 
  AlexNet은 이미지 분류 작업에서 획기적인 발전을 이뤄낸 convolutional neural network(CNN)입니다. 이 모델은 ImageNet LSVRC-2010 데이터셋을 활용해 학습되었으며, top-1 오류율 37.5%, top-5 오류율 17%로 당시 최고 성능을 기록했다고 합니다. AlexNet은 약 6천만 개의 파라미터와 65만 개의 뉴런으로 구성된 깊은 컨볼루션 네트워크로, 과적합 문제를 완화하기 위해 드롭아웃(dropout) 기법을 도입했다고 설명합니다. 이 모델은 ILSVRC-2012 대회에서 top-5 오류율 15.3%를 기록했으며, 이는 2등 모델의 26.2%와 비교할 때 상당한 차이를 보이며 딥러닝의 성능을 입증하였습니다.
 *** Introduction
  천만개가 넘는 이미지로부터 천개의 카테고리를 분류하는 작업을 학습하기 위해선, 학습능력이 큰 모델이 필요하고 CNN(convolutional neural network)가 필요하다고 주장 합니다. CNN은 이미지의 통계적 성질을 보다 잘 반영하여 기존 신경망보다 더 적은 파라미터로 더 효율적인 학습이 가능하다고 합니다. 더욱이 최신 GPU의 발전으로 2D convolution의 최적화된 처리가 가능하게 되었고 그런 이유로 고해상도의 이미지 데이터를 처리하는데에 어려움이 해소되었다고 설명합니다.

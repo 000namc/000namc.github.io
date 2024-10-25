@@ -11,8 +11,9 @@
 
     <li>
         {% assign categories = post.categories[0] %}
+        {% assign tags = post.tags | join: ", " %}
         <a class="active internal" href="{{ post.url | relative_url }}"> 
-            <span style="opacity: 0.5;">{{ categories }} | </span>
+            <span style="opacity: 0.5;">{{ categories }} | {{tags}} | </span>
             {{ post.title }}
         </a>
         {% if post.last_updated %}
