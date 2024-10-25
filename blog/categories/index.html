@@ -22,6 +22,6 @@ group: navigation
     <h3 id="{{ category | replace:' ','-' }}">{{ category }}</h3>
     <ul class="post-list">
         {% assign pages_list = site.categories[category] %}
-        {% include helpers/pages_list %}
+        {% include helpers/categories_collate %}
     </ul>
 {% endfor %}

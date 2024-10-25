@@ -23,6 +23,6 @@ group: navigation
     <h3 id="{{ actual_tag_name | replace:' ','-' | replace:'#','sharp' }}">{{ actual_tag_name }}</h3>
     <ul class="post-list">
         {% assign pages_list = site.tags[actual_tag_name] %}
-        {% include helpers/pages_list %}
+        {% include helpers/tags_collate %}
     </ul>
 {% endfor %}
