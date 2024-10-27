@@ -10,7 +10,7 @@ tags:
 
 
 
-<a id="orgabcd546"></a>
+<a id="orge9a1ad5"></a>
 
 ## hello world,
 
@@ -21,7 +21,7 @@ tags:
 블로그를 좀 더 깔끔하게 정리하고 싶습니다. 아래 사항들을 천천히 업데이트해 나갈 예정입니다.
 
 
-<a id="org4c77e86"></a>
+<a id="org34d517f"></a>
 
 ## to do
 
@@ -33,10 +33,16 @@ tags:
 
 4.  DONE ox-jekyll-md 의 파일 이름 규칙 수정
 
-5.  TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
+5.  DONE light->dark 로 블로그 전채 색상 변경
 
-6.  TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
+6.  DONE 도메인 구입 및 연결
 
-7.  TODO 블로그 글 좌측에 table of contents 구성
+7.  DONE 이미지 데이터 호스팅을 위한 nginx 서버 구성
 
-8.  TODO 블로그 광고 붙이기
+8.  TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
+
+9.  TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
+
+10. TODO 블로그 글 좌측에 table of contents 구성
+
+11. TODO 블로그 광고 붙이기

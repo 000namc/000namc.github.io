@@ -15,6 +15,9 @@
 **** DONE org-mode로 포스팅 할 수 있도록 구성
 **** DONE 블로그 포스트 제목에 prefix 추가 
 **** DONE ox-jekyll-md 의 파일 이름 규칙 수정
+**** DONE light->dark 로 블로그 전채 색상 변경
+**** DONE 도메인 구입 및 연결
+**** DONE 이미지 데이터 호스팅을 위한 nginx 서버 구성
 **** TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결 
 **** TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
 **** TODO 블로그 글 좌측에 table of contents 구성
