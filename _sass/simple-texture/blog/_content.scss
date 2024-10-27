@@ -5,7 +5,7 @@
         padding: 2px;
 
         color: #0077CC;
-        border-bottom: 1px dotted #FFD18D;
+        border-bottom: 3px dotted #000000;
 
         &:hover {
             -webkit-transition: all .3s ease-in-out;
@@ -437,7 +437,7 @@
 
         list-style: none;
 
-        background: url('../images/theme/noisy_texture_section0-200x200.png') repeat #F0F0F0;
+        background: url('../images/theme/noisy_texture_section0-200x200.png') repeat #212026;
         background-clip: padding-box;
         box-shadow: inset 0 3px 3px rgba(0, 0, 0, .4), 0 3px 0 rgba(255, 255, 255, .4);
 
