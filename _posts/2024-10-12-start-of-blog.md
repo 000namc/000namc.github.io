@@ -10,7 +10,7 @@ tags:
 
 
 
-<a id="orge9a1ad5"></a>
+<a id="org5d22217"></a>
 
 ## hello world,
 
@@ -21,7 +21,7 @@ tags:
 블로그를 좀 더 깔끔하게 정리하고 싶습니다. 아래 사항들을 천천히 업데이트해 나갈 예정입니다.
 
 
-<a id="org34d517f"></a>
+<a id="org19b6e34"></a>
 
 ## to do
 
@@ -45,4 +45,6 @@ tags:
 
 10. TODO 블로그 글 좌측에 table of contents 구성
 
-11. TODO 블로그 광고 붙이기
+11. TODO 블로그 구글 검색 등록하기
+
+12. TODO 블로그 광고 붙이기

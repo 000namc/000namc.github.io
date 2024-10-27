@@ -21,4 +21,5 @@
 **** TODO ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결 
 **** TODO ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
 **** TODO 블로그 글 좌측에 table of contents 구성
+**** TODO 블로그 구글 검색 등록하기
 **** TODO 블로그 광고 붙이기
