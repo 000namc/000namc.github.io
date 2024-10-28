@@ -23,7 +23,7 @@ sass:
 # Site Data
 url: # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: # the subpath of your site, e.g. /blog
-title: 000namc.blog
+title: 000namc.xyz
 description: "Small things matter, a tiny life"
 keywords: 'blog, life, AI, fising, investing, cooking, singing'
 author:
@@ -47,7 +47,7 @@ author:
     - name: vk
       url:
 home:
-  section1: <h1>000namc.blog</h1>
+  section1: <h1>000namc.xyz</h1>
   section2: <h2>Small things matter, a tiny life</h2>
   section3: <div class="social-links"><a class="ico-github btn" href="https://github.com/000namc" title="View on GitHub"></a></div>
 blog:
