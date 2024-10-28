@@ -11,7 +11,7 @@
 
 ** (GoogLeNet) Going deeper with convolutions
 
-http://39.115.110.177:40000/nginx/blog/googlenet/figure1.jpeg
+https://000namc.xyz/nginx/blog/googlenet/figure1.jpeg
 
 *** Abstract 
 GoogLeNet은 Inception 이라는 architecture를 제안하고 적용한 모델입니다. 이 구조의 주요 특징은 네트워크 내부의 계산 자원을 보다 효율적으로 활용할 수 있다는 점이라고 말합니다. 이러한 효율적인 구조를 이용해서 네트워크를 더욱 깊이 있게 설계할 수 있게 되었으며, 22개층으로 이루어진 이 네트워크는 분류와 탐지 모두에서 좋은 성능을 보였다고 설명합니다. 

@@ -12,7 +12,7 @@
  
 ** (ResNet) Deep Residual Learning for Image Recognition
 
-http://39.115.110.177:40000/nginx/blog/resnet/figure1.jpeg
+https://000namc.xyz/nginx/blog/resnet/figure1.jpeg
 
 *** Abstract 
 이 연구에서는 더 깊은 신경망을 학습시키기 위해 residual learning framework를 제안합니다. ImageNet 데이터셋에서 최대 152층의 residual network를 구성하였다고 합니다. 이 모델은 3.57%의 error rate로 ILSVRC2015 에서 1위를 차지하였다고 합니다. 
