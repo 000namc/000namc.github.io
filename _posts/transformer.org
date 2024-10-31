@@ -1,6 +1,6 @@
-#+TITLE: (Transformer) Attention Is All You Need
+#+TITLE: (Transformer) Attention Is All You Need 리뷰
 #+LAYOUT: post
-#+jekyll_tags: vision
+#+jekyll_tags: nlp
 #+jekyll_categories: AI-Research
 #+DATE: 2024-10-31
 

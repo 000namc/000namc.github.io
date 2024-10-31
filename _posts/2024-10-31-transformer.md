@@ -1,11 +1,11 @@
 ---
-title: "(Transformer) Attention Is All You Need"
+title: "(Transformer) Attention Is All You Need 리뷰"
 date: 2024-10-31
 layout: post
 categories: 
 - AI-Research
 tags: 
-- vision
+- nlp
 ---
 
 -   상위포스트 : nlp분야 논문리뷰 및 구현
@@ -13,7 +13,7 @@ tags:
 -   구현 : <https://github.com/000namc/paper-implementations/tree/main/vision>
 
 
-<a id="org86ebc3a"></a>
+<a id="orgbf81ff3"></a>
 
 ## (Transformer) Attention Is All You Need
 
