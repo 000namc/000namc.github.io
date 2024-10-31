@@ -10,14 +10,12 @@ tags:
 
 
 
-<a id="org6e20d83"></a>
 
 ## Intro
 
 nlp분야의 논문들을 하나씩 정리하고, 구현해보려 합니다. Transformer에서 시작하여 LLM에 이르기까지의 논문을 하나씩 포스팅 해보도록 하겠습니다. 이 포스팅에는 각 모델들의 큰 특징을 요약해서 정리하겠습니다. 각 모델의 구현은 <https://github.com/000namc/paper-implementations/tree/main> 에서 확인할 수 있습니다.
 
 
-<a id="orgbb85509"></a>
 
 ## Transformer
 
