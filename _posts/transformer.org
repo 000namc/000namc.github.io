@@ -1,0 +1,12 @@
+#+TITLE: (Transformer) Attention Is All You Need
+#+LAYOUT: post
+#+jekyll_tags: vision
+#+jekyll_categories: AI-Research
+#+DATE: 2024-10-31
+
+- 상위포스트 : nlp분야 논문리뷰 및 구현
+- 논문 : https://arxiv.org/pdf/1706.03762
+- 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
+
+** (Transformer) Attention Is All You Need
+to be written
