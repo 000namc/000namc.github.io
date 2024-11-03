@@ -15,7 +15,7 @@ https://000namc.xyz/nginx/blog/offline-abtest/figure1.jpeg
 - Let $x$ denote the contextual features Let a denote any product of top-K
 - Let $r = r(a, x)$ denote a reward that could be the number of clicks or the generated revenue.
 - We will represent random variables with capital letters such as $Y$ and realization of random variables with lower-case letters such as $y$
-- A policy $\pi (\pi(A∣X = x)$ is a probability distribution over A for a given $x$, where $A$ represents list of top-K products.
+- A policy $\pi$ or $\pi(A∣X = x)$ is a probability distribution over A for a given $x$, where $A$ represents list of top-K products.
 - Let $\pi_p, \pi_t$ denote product policy and test policy, respectively.
 - To compare these two policy, we estimate the average difference of value $Δ$
 
