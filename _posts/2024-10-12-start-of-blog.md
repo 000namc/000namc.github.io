@@ -19,28 +19,21 @@ tags:
 <hr>
 
 ## ☑ Done
-### 블로그 테마 fix
+-   블로그 테마 fix
+-   org-mode로 포스팅 할 수 있도록 구성
+-   블로그 포스트 제목에 prefix 추가
+-   ox-jekyll-md 의 파일 이름 규칙 수정
+-   light->dark 로 블로그 전채 색상 변경
+-   도메인 구입 및 연결
+-   이미지 데이터 호스팅을 위한 nginx 서버 구성
+-   포스트 그룹핑 형식 변경 (연단위 -> 연월단위)
+-   포스트 레이아웃 여백크기 조절 (좌우 26:36 -> 31:31)
 
-### org-mode로 포스팅 할 수 있도록 구성
-
-### 블로그 포스트 제목에 prefix 추가
-
-### ox-jekyll-md 의 파일 이름 규칙 수정
-
-### light->dark 로 블로그 전채 색상 변경
-
-### 도메인 구입 및 연결
-
-### 이미지 데이터 호스팅을 위한 nginx 서버 구성
 <hr>
 
 ## ☐ Todo
-### ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
-
-### ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
-
-### 블로그 글 좌측에 table of contents 구성
-
-### 블로그 구글 검색 등록하기
-
-### 블로그 광고 붙이기
+-   ox-jekyll-md 의 한글 인코딩 깨짐 문제 해결
+-   ox-jekyll-md 의 table of contents의 hyperlink 동작 문제 해결
+-   블로그 글 좌측에 table of contents 구성
+-   블로그 구글 검색 등록하기
+-   블로그 광고 붙이기
