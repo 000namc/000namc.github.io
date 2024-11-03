@@ -1,0 +1,16 @@
+#+TITLE: Offline A/B testing for Recommender Systems 수식 정리
+#+LAYOUT: post
+#+jekyll_tags: recommendation
+#+jekyll_categories: AI-Research
+#+DATE: 2024-11-03
+
+** Intro
+
+** Abstract
+
+** 기본 notation 
+
+** 핵심 수식 
+
+** 의미 
+
