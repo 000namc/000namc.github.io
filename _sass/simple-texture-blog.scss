@@ -87,9 +87,15 @@ a:link,
 a:visited {
     text-decoration: none;
 }
+.entry-content {
+    max-width: 100%;
+    overflow: hidden; /* 컨테이너에서 벗어나지 않도록 설정 */
+}
 
 img {
-    max-width: 95%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 
 button,
