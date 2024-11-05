@@ -1,0 +1,37 @@
+#+TITLE: (BERT) BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding 리뷰
+#+LAYOUT: post
+#+jekyll_tags: nlp
+#+jekyll_categories: AI-Research
+#+DATE: 2024-11-05
+
+- 상위포스트 : nlp 분야 논문리뷰 및 구현
+- 논문 : https://arxiv.org/pdf/1810.04805
+- 구현 : https://github.com/000namc/paper-implementations/tree/main/vision
+
+<hr>
+
+https://000namc.xyz/nginx/blog/bert/figure2.jpeg
+ 
+*** Abstract
+ BERT는 모든 층에서 좌우 문맥을 동시에 고려한 양방향 표현을 사전학습하도록 설계하였다고 합니다. 이 사전 학습된 BERT 모델은 추가적인 출력층 만으로도 다양한 작업을 위한 모델로 fine-tuning 이 가능하게 되는데, 이는 개념적으로 간단하면서도 강력하다고 설명합니다. 
+
+*** Introduction
+이 논문이 출판되던 2018년 즈음에는 차차 언어 모델 사전학습이 많은 자연어 처리 문제들에서 효과적임이 입증되고 있었습니다. 언어 모델을 학습하는 데에는 두가지 방법론이 있는데, feature-based 와 fine-tuning으로 나뉘어 집니다. feature-based 방법은 ELMo model처럼 언어 모델의 representation을 additional 한 feature로써 활용하고, fine-tuning 방법은 GPT model처럼 additional한 학습가능한 parameter를 추가하고 모든 parameter를 특정 테스크에 fine tuning을 하는것입니다. 두 방법 모두 사전학습된 단방향의 언어모델을 사용하는점에서 동일하겠습니다.
+
+언어 모델이 단방향으로만 작동하는 것은 특정 테스크에서는 유리할 수 있으나 일반적인 자연어 처리 문제들을 다루기에는 무리가 있다고 서술하고 있습니다. 그런의미에서  이 연구에서는 양방향의 맥락을 고려할 수 있는 BERT를 제안합니다. 양방향의 사전학습이 가능 할 수 있도록 MLM task를 제안합니다. 최종적으로는 MLM과 NSP를 이용하여 사전학습을 구성하였다고 합니다. 
+
+이러한 구성으로 11개의 nlp task에서 state-of-the-art인 결과를 얻어 낼 수 있었다고 합니다. 
+*** Related Work
+**** Unsupervised Feature-based Approaches
+**** Unsupervised Fine-tuning Approacahes
+**** Transfer Learning from Supervised Data
+*** BERT
+
+*** Experiments
+
+*** Ablation Studies
+to be written
+*** Conclusion
+언어 모델의 사전학습이 많은 자연어 처리 문제에 도움이 됨을 강조 하고 있습니다. 또, 제안된 모델 BERT의 경우 그중에서도 양방향 아키텍처로 일반화한 부분에서 그 차별점이 있음을 밝히고 있습니다. 
+*** Reference
+Kenton, Jacob Devlin Ming-Wei Chang, and Lee Kristina Toutanova. "Bert: Pre-training of deep bidirectional transformers for language understanding." Proceedings of naacL-HLT. Vol. 1. 2019.
