@@ -38,14 +38,18 @@ https://000namc.xyz/nginx/blog/bert/figure3.jpeg
 BERT는 더많은 문제에 활용가능하도록 구성하기 위해 single sentence와 pair of sentence를 모두 입력으로 사용할 수 있도록 만들었습니다. WordPiece tokenizer를 활용하여 30000개의 단어 사전(각각은 토큰 이라 부름)을 구성하였고, 맨 앞의 토큰은 [CLS] sentence 마지막의 토큰은 [SEP] 으로 구성하였습니다. CLS토큰은 classification을 위해 최종적으로 활용하기 위해 구성한 토큰으로, 문장의 핵심이 되는 정보가 담기도록 구성합니다.  BERT의 최종적인 input representation은 각 단어 토큰 embedding과 sentence를 구분하기위한 segment embedding, trasformer모델과 마찬가지의 position embedding의 합으로 구성합니다. 
 
 **** Pre-training
-BERT를 사전학습하는데에 두가지 방법이 있습니다. 하나는 MLM, 그리고 NSP입니다.
+BERT를 사전학습하는데에 두가지 방법이 있습니다.
 - Task 1 : (MLM) Masked LM
-
+깊은 양방향 표현을 학습시키기 위해, 입력 토큰의 일부를 무작위로 마스킹하고, 이러한 마스킹된 토큰을 예측하는 테스크를 구성할 필요가 있겠습니다. 이러한 구조를 MLM이라 부릅니다. 이 연구에서는 모든 실험에서 WordPiece 토큰 중 15%를 무작위로 마스킹 하였다고 합니다. 단, 이러한 방법에서의 사전학습은 fine-tuning을 하는 상황과 괴리가 있겠습니다. fine-tuning 단계에서 [MASK] token이 나타나지 않기 때문인데, 이런이유로 선택된 위치에 대해 입력토큰의 80% 만 [MASK] 토큰으로 대체하고 10% 확률로 임의 토큰, 10% 확률로 원래 토큰을 그대로 유지한다고 합니다.
 - Task 2 : (NSP) Next Sentence Prediction
-  
+문장간의 관계를 학습시키기 위해, 언어 코퍼스에서 이어지는 문장을 이용해 다음 문장을 예측하게 하는 테스크를 구성할 필요가 있겠습니다. 이러한 구조를 NSP라 부릅니다. 구체적으로, 문장 A, B를 선택할때 50%는 문장 B를 실제로 A 다음에 이어지는 문장으로 설정하고, 나머지 50%는 무작위 문장으로 설정 하였다고 합니다. 이러한 구성의 사전학습이 QA와 NLI 테스크에서 유효함을 확인하였다고 합니다.
+**** Pre-training data
+사전 훈련 코퍼스로는 BooksCorpus (8억 단어)와 English Wikipedia (25억 단어)를 사용하였다 합니다. 
 **** Fine-tuning
+Transformer의 Self Attention 메커니즘 덕분에 단일 sentence나 sentence pair를 포함하는 다양한 downstream task를 처리할 수 있겠습니다. 각 작업별 입력과 출력을 BERT에 연결하고 모든 parameter를 end-to-end로 fine-tune 할 수 있습니다. 출력에서의 token embedding은, 시퀀스 태깅이나 질의응답 같은 token level의 task에서 사용되고, [CLS]의 embedding은 entailment나 감성분류 등의 일반적인 분류 작업에서 활용합니다. 
 *** Experiments
-
+https://000namc.xyz/nginx/blog/bert/figure4.jpeg
+다양한 benchmark dataset에서 성능을 기록하고 있습니다. 생략합니다. 
 *** Ablation Studies
 to be written
 *** Conclusion
