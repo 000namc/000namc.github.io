@@ -1,4 +1,4 @@
-#+TITLE: 로컬 서버에 k8s cluster 구축하기
+#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 1 (kind, nginx)
 #+LAYOUT: post
 #+jekyll_tags: k8s
 #+jekyll_categories: Development
@@ -6,7 +6,13 @@
 
 ** Intro
 
- 이제까지 저는 이미 잘 구성된 k8s cluster환경에서 어떻게 활용할 수 있는지에 대해서만 다뤄 왔습니다. 하지만 사용하면서 계속 언젠가는 직접한번 구축해보고 모르는 개념들을 다뤄보고 싶었습니다. 이번에 큰맘 먹고 한번 작업을 해보았는데요, 이번 포스트에는 k8s를 구축하는 부분부터 docker container로 관리하던 nginx를 k8s로 옮겨낸 과정까지 담아보았습니다.  
+ 이제까지 저는 이미 잘 구성된 k8s cluster환경에서 어떻게 활용할 수 있는지에 대해서만 다뤄 왔습니다. 하지만 사용하면서 계속 언젠가는 직접한번 구축해보고 모르는 개념들을 다뤄보고 싶었습니다. 이번에 큰맘 먹고 한번 작업해보려고 합니다. k8s cluster를 구성하는데에서 시작하여 airflow를 k8s 환경에서 동작하도록 구성하는것이 목표입니다. part1, 이번 포스트에는 k8s를 구축하는 부분부터 docker container로 관리하던 nginx를 k8s로 옮겨낸 과정까지 담아보겠습니다.
+
+- ☑ k8s cluster 설치
+- ☑ nginx 구성
+- ☐ rancher 구성
+- ☐ ceph storage 구성
+- ☐ airflow (iceberg, hive, spark, trino) 구성... 
 
 ** kind install
  먼저 on-premise환경에서 k8s를 구성하는 방법이 몇가지가 있는데 크게 고민하지 않고 docker container 수준에서 관리 할 수 있는 kind를 사용하기로 정했습니다. 일단 설치부터 진행했습니다. 
@@ -51,26 +57,30 @@ ingress는, ingress와 ingress controller로 나뉩니다. 우선 ingress는 외
 ** install and deploy controller with helm
 
 아래와 같이 먼저 controller를 helm을 이용하여 install 및 deploy 하였습니다.
+
 #+BEGIN_SRC
-CHART_VERSION="4.11.3"
-APP_VERSION="1.11.3"
-
-helm template ingress-nginx ingress-nginx \
---repo https://kubernetes.github.io/ingress-nginx \
---version ${CHART_VERSION} \
---namespace ingress-nginx \
-> /app/k8s/ingress/controller/nginx/manifests/nginx-ingress.${APP_VERSION}.yaml
-
 kubectl create namespace ingress-nginx
-kubectl apply -f /app/k8s/ingress/controller/nginx/manifests/nginx-ingress.1.11.3.yaml
+
+CHART_VERSION="4.11.3"
+# APP_VERSION="1.11.3"
+
+helm install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --version ${CHART_VERSION} \
+  --namespace ingress-nginx \
+  --set controller.ingressClass=nginx
+
 kubectl -n ingress-nginx get pods
 kubectl -n ingress-nginx get svc
 #+END_SRC
 
+
 ** secret 생성
 ingress의 HTTPS 포트를 사용하기 위해 secret을 생성하였습니다.
 #+BEGIN_SRC
-kubectl create secret tls 1st-secret --key /app/nginx/letsencrypt/live/000namc.xyz/privkey.pem --cert /app/nginx/letsencrypt/live/000namc.xyz/cert.pem
+kubectl create secret tls 1st-secret \
+  --key /app/nginx/letsencrypt/live/000namc.xyz/privkey.pem \
+  --cert /app/nginx/letsencrypt/live/000namc.xyz/cert.pem
 #+END_SRC
 
 ** deploy nginx service
