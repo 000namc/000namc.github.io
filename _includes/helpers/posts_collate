@@ -5,7 +5,7 @@
     {% if current_year != this_year or current_month != this_month %}
         {% if forloop.first != true %}</ul>{% endif %}
 
-        <h2 class="year-month">{{ this_year }}.{{ this_month | plus: 0 }}</h2>
+        <h2 class="no-style">{{ this_year }}.{{ this_month | plus: 0 }}</h2>
         <ul class="post-list">
     {% endif %}
 

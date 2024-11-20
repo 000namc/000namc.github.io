@@ -11,6 +11,8 @@ layout: blog
                     </div>
                 </div>
             </header>
+
+          
             <div class="bd article-content">
                 <div class="entry-content">
                     <div class="meta">
@@ -43,6 +45,15 @@ layout: blog
                             {% assign tags_list = page.tags | sort %} {% include helpers/tags_list %}
                         </ul>
                     </div>
+                            <!-- 목차 컨테이너 추가 -->
+                    <div class="toc-container">
+                        <div class="table-of-contents">
+                            <h1>Table of Contents</h1>
+                            <ul id="toc"></ul>
+                        </div>
+                    </div>
+                    <br><hr><br>
+
                     <div itemprop="articleBody">
                         {{ content }}
                     </div>
@@ -78,3 +89,63 @@ layout: blog
         </div>
     </div>
 </article>
+
+<style>
+    #toc li {
+        list-style-type: none; /* 기본적인 리스트 마커 제거 */
+        padding-left: 0px; /* 왼쪽에 들여쓰기 추가 */
+    }
+
+    /* h3 항목에만 들여쓰기 적용 */
+    #toc li.h3 {
+        padding-left: 20px; /* h3 항목에만 왼쪽 들여쓰기 */
+    }
+
+    #toc li::before {
+        content: " "; /* 하이픈을 수동으로 추가 */
+        margin-left: 0px; /* 하이픈 위치를 조정 */
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toc = document.getElementById("toc");
+        const headings = document.querySelectorAll('.entry-content h2, .entry-content h3');
+        
+        let h2Counter = 0; // h2의 번호 추적
+        let h3Counter = 0; // h3의 번호 추적
+        
+        headings.forEach((heading) => {
+            const isH2 = heading.tagName.toLowerCase() === "h2";
+            const isH3 = heading.tagName.toLowerCase() === "h3";
+            
+            // h2일 경우 카운터를 증가시키고, h3는 h2에 의존하여 카운터를 증가시킴
+            if (isH2) {
+                h2Counter++;   // 새로운 h2가 나타날 때마다 카운터 증가
+                h3Counter = 0; // 새로운 h2가 나타나면 h3는 리셋
+            } else if (isH3) {
+                h3Counter++;   // 새로운 h3가 나타날 때마다 h3 카운터 증가  
+            }
+
+            // 제목에 대한 고유 ID 설정
+            const id = heading.id || heading.textContent.trim().replace(/\s+/g, '-').toLowerCase();
+            heading.id = id;
+
+            // 넘버링을 위한 텍스트 생성 (예: "1.1", "2.2" 등)
+            const numbering = isH2 ? `${h2Counter}` : `${h2Counter}.${h3Counter}`;
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#${id}`;
+            a.textContent = `${numbering} ${heading.textContent}`;  // 넘버링과 제목을 합침
+            
+            // h3 항목에만 padding-left 적용
+            if (isH3) {
+                li.style.paddingLeft = "40px";  // h3 항목에만 들여쓰기 적용
+            }
+
+            li.appendChild(a);
+            toc.appendChild(li);
+        });
+    });
+</script>

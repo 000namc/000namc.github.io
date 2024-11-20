@@ -39,7 +39,7 @@ h4 {
 
 .h1,
 h1 {
-    font-size: 2.3em;
+    font-size: 2em;
     line-height: 42px;
 
     margin-top: 42px;
@@ -48,33 +48,76 @@ h1 {
 
 .h2,
 h2 {
-    font-size: 2em;
-    line-height: 42px;
-
-    margin-top: 34px;
-    margin-bottom: 16px;
-    margin-left: 10px;
-}
-
-.h3,
-h3 {
+    position: relative;
     font-size: 1.7em;
     line-height: 26px;
 
     margin-top: 52px;
     margin-bottom: 20px;
+    margin-left: 10px;
+    counter-increment: h2-counter;
+}
+.h2::before,
+h2::before {
+    content: counter(h2-counter) ". ";  /* 카운터 값과 점을 삽입 */
+    font-weight: bold;  /* 번호를 굵게 표시 */
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 2px; /* 두께 */
+    background-color: #D6D6D6; 
+    border-radius: 5px;  /* 둥근 모서리 */
+}
+/* no-style 클래스를 추가했을 때 스타일을 변경 */
+h2.no-style,
+.h2.no-style {
+    counter-increment: none;  /* 카운터 제거 */
+}
+
+h2.no-style::before,
+.h2.no-style::before {
+    content: none; /* 번호 표시 제거 */
+}
+
+h2.no-style::after {
+    content: none; /* 밑줄 제거 */
+}
+
+.h3,
+h3 {
+    font-size: 1.5em;
+    line-height: 26px;
+
+    margin-top: 52px;
+    margin-bottom: 12px;
     margin-left: 20px;
+    counter-increment: h3-counter;
+}
+.h3::before,
+h3::before {
+    content: counter(h2-counter) "." counter(h3-counter) ". "; 
+    font-weight: bold;
+}
+
+h2 + h3 {
+    counter-reset: h3-counter 0;  /* 각 h2가 나오면 h3 번호 리셋 */
 }
 
 .h4,
-h4 {
-    font-size: 1.5em;
+h4 {font-size: 1.5em;
     line-height: 26px;
 
     margin-top: 52px;
     margin-bottom: 12px;
     margin-left: 30px;
 }
+
+
 
 .small,
 aside,
@@ -105,6 +148,47 @@ optgroup,
 select,
 textarea {
     font-family: $fonts-body;
+}
+
+div.unit-body {
+    max-width: 1150px; /* 화면 크기와 관계없이 최대 너비 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 0 10px; /* 안쪽 여백 */
+    border-radius: 8px; /* 테두리 모서리 둥글게 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+.content {
+    max-width: 1100px; /* 본문의 최대 너비 */
+    margin: 0 auto; /* 화면 가운데 정렬 */
+    padding: 0 20px; /* 좌우 여백 추가 */
+    box-sizing: border-box; /* 패딩 포함한 전체 크기 계산 */
+}
+
+/* 목차 컨테이너 스타일 */
+.toc-container {
+    position: relative;
+    top: 0%;             /* 화면의 상단에서 10% 위치에 고정 */
+    left: 10px;           /* 화면 왼쪽에서 10px 만큼 떨어진 위치 */
+    width: 1000px;         /* 목차의 너비 설정 */
+    max-height: 80%;      /* 목차가 너무 길어지지 않도록 최대 높이 설정 */
+    overflow-y: auto;     /* 목차가 길어지면 스크롤이 생기도록 설정 */
+    background: #272822;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* 목차 내 항목 스타일 */
+.table-of-contents {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.toc-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
 @import 'simple-texture/blog/overlay';
