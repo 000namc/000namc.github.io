@@ -29,6 +29,14 @@ kubectl create namespace cattle-system
 kubectl create namespace cert-manager
 #+END_SRC
 
+** secret 생성
+- rancher.000namc.xyz
+#+BEGIN_SRC
+kubectl create secret tls rancher-secret \
+  --key /etc/letsencrypt/live/rancher.000namc.xyz/privkey.pem \
+  --cert /etc/letsencrypt/live/rancher.000namc.xyz/cert.pem \
+  --namespace cattle-system
+#+END_SRC
 
 ** cert-manager install
 
@@ -45,8 +53,10 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --set c
 #+BEGIN_SRC
 helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
-  -f /app/k8s/rancher/values.yaml
-  
+  -f /app/k8s/rancher/values.yaml \
+  --set ingress.tls.secretName=rancher-secret \
+  --set ingress.ingressClassName: nginx
+
 # helm upgrade rancher rancher-stable/rancher \
   --namespace cattle-system \
   -f /app/k8s/rancher/values.yaml
@@ -58,7 +68,7 @@ hostname: 000namc.xyz
 bootstrapPassword: admin
 #+END_SRC
 
-설치 과정중에 많은 시행착오가 있었습니다. 000namc.xyz/rancher 혹은 rancher.000namc.xyz 로 기본 URL을 세팅하고 싶었는데 그렇게 구성하지 못했습니다. 그럼에도 과정중에 원인을 파악하기 위해 사용했던 명령어들을 정리해두려 합니다.
+설치 과정중에 많은 시행착오가 있었습니다. 과정중에 원인을 파악하기 위해 사용했던 명령어들을 정리해두려 합니다.
 
 #+BEGIN_SRC
 # ingress-nginx가 어떤 요청을 받고 있는지 확인
@@ -79,7 +89,7 @@ kubectl describe ingress rancher -n cattle-system
 
 #+END_SRC
 
-최종적으로 rancher는 https://000namc.xyz/dashboard/home 로 접근할 수 있게 되었습니다. 
+최종적으로 rancher는 https://rancher.000namc.xyz/dashboard/home 로 접근할 수 있게 되었습니다. 
 ** ceph storage install
 
 to be written

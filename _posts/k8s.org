@@ -77,11 +77,14 @@ kubectl -n ingress-nginx get svc
 
 ** secret 생성
 ingress의 HTTPS 포트를 사용하기 위해 secret을 생성하였습니다.
+- 000namc.xyz
 #+BEGIN_SRC
 kubectl create secret tls 1st-secret \
   --key /app/nginx/letsencrypt/live/000namc.xyz/privkey.pem \
   --cert /app/nginx/letsencrypt/live/000namc.xyz/cert.pem
 #+END_SRC
+
+
 
 ** deploy nginx service
 
