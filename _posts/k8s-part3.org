@@ -1,0 +1,138 @@
+#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 3 (gitea)
+#+LAYOUT: post
+#+jekyll_tags: k8s
+#+jekyll_categories: Development
+#+DATE: 2025-1-7
+
+** intro
+
+ 지난번에 이어 로컬서버에 k8s cluster 환경을 구성하고 있습니다. k8s cluster를 구성하는데에서 시작하여 airflow를 k8s 환경에서 동작하도록 구성하는것이 목표입니다. part2, 이번 포스트에는 k8s cluster의 관리도구인 rancher를 세팅한 과정, 그리고 airflow의 데이터 저장공간으로 사용할 ceph storage를 세팅한 과정을 담아보겠습니다.
+
+- ☑ k8s cluster 설치
+- ☑ nginx 구성
+- ☑ rancher 구성
+- ☑ gitea 구성
+- ☐ ceph storage 구성
+- ☐ airflow (iceberg, hive, spark, trino) 구성... 
+
+** prepare
+먼저 name space 와 pv, pvc를 정의했습니다.
+
+#+BEGIN_SRC
+kubectl create namespace gitea
+
+kubectl apply -f /app/k8s/volumes/gitea-pv.yaml
+kubectl apply -f /app/k8s/volumes/gitea-pvc.yaml -n gitea
+# kubectl delete namespace gitea
+# kubectl get pvc -n gitea 
+#+END_SRC
+
+- gitea-pv.yaml
+#+BEGIN_SRC
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gitea-pv
+spec:
+  capacity:
+    storage: 500Gi  # 필요한 크기 설정
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard  # 추가
+  hostPath:
+    path: /mnt/data/gitea  # Gitea 데이터 저장 경로
+    type: DirectoryOrCreate
+#+END_SRC
+
+- gitea-pvc.yaml
+#+BEGIN_SRC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Gi
+  volumeName: gitea-pv
+  storageClassName: standard
+#+END_SRC
+
+** deploy gitea
+
+#+BEGIN_SRC
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea
+  template:
+    metadata:
+      labels:
+        app: gitea
+    spec:
+      containers:
+        - name: gitea
+          image: gitea/gitea:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GITEA_DB_TYPE
+              value: sqlite3  # SQLite를 사용할 때
+            - name: GITEA__SERVER__ROOT_URL
+              value: https://000namc.xyz/gitea/
+            - name: GITEA__SERVER__DOMAIN
+              value: 000namc.xyz
+            - name: GITEA__SERVICE__DISABLE_REGISTRATION
+              value: "true"
+          volumeMounts:
+            - name: gitea-storage
+              mountPath: /data  # 데이터가 저장될 위치
+      volumes:
+        - name: gitea-storage
+          persistentVolumeClaim:
+            claimName: gitea-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitea
+spec:
+  selector:
+    app: gitea
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitea
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - 000namc.xyz
+    secretName: 1st-secret
+  rules:
+  - host: 000namc.xyz
+    http:
+      paths:
+      - path: /gitea(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: gitea
+            port:
+              number: 3000
+#+END_SRC

@@ -1,4 +1,4 @@
-#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 2 (rancher, ceph storage)
+#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 2 (rancher)
 #+LAYOUT: post
 #+jekyll_tags: k8s
 #+jekyll_categories: Development
@@ -11,7 +11,8 @@
 - ☑ k8s cluster 설치
 - ☑ nginx 구성
 - ☑ rancher 구성
-- ☑ ceph storage 구성
+- ☐ gitea 구성
+- ☐ ceph storage 구성
 - ☐ airflow (iceberg, hive, spark, trino) 구성... 
 
 rancher를 구성할때에는 https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster 를 참고하였습니다.
@@ -55,7 +56,7 @@ helm install rancher rancher-stable/rancher \
   --namespace cattle-system \
   -f /app/k8s/rancher/values.yaml \
   --set ingress.tls.secretName=rancher-secret \
-  --set ingress.ingressClassName: nginx
+  --set ingress.ingressClassName=nginx
 
 # helm upgrade rancher rancher-stable/rancher \
   --namespace cattle-system \
@@ -90,6 +91,3 @@ kubectl describe ingress rancher -n cattle-system
 #+END_SRC
 
 최종적으로 rancher는 https://rancher.000namc.xyz/dashboard/home 로 접근할 수 있게 되었습니다. 
-** ceph storage install
-
-to be written
