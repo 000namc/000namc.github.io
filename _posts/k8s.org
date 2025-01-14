@@ -1,4 +1,4 @@
-u#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 1 (kind, nginx)
+#+TITLE: 로컬 서버에 k8s cluster 환경 구성하기 part 1 (kind, nginx)
 #+LAYOUT: post
 #+jekyll_tags: k8s
 #+jekyll_categories: Development
@@ -46,8 +46,10 @@ nodes:
 - role: control-plane
   image: kindest/node:v1.30.0  # 컨트롤 플레인 노드에 사용할 이미지
   extraMounts:
-    - hostPath: /app/data/k8s
-      containerPath: /mnt/data
+    - hostPath: /app/data/k8s/gitea
+      containerPath: /mnt/data/gitea
+    - hostPath: /app/data/nginx
+      containerPath: /mnt/data/nginx
 #+END_SRC
 
 
@@ -97,10 +99,15 @@ ingress의 HTTPS 포트를 사용하기 위해 secret을 생성하였습니다.
 #+BEGIN_SRC
 kubectl create secret tls 1st-secret \
   --key /app/nginx/letsencrypt/live/000namc.xyz/privkey.pem \
-  --cert /app/nginx/letsencrypt/live/000namc.xyz/cert.pem
+  --cert /app/nginx/letsencrypt/live/000namc.xyz/fullchain.pem
 #+END_SRC
 
 
+** volume 생성
+#+BEGIN_SRC
+kubectl apply -f /app/k8s/volumes/nginx-pv.yaml
+kubectl apply -f /app/k8s/volumes/nginx-pvc.yaml
+#+END_SRC
 
 ** deploy nginx service
 
@@ -170,14 +177,14 @@ spec:
         - name: nginx-config
           mountPath: /etc/nginx/
         - name: nginx-data
-          mountPath: /app/data/nginx
+          mountPath: /mnt/data/nginx
       volumes:
       - name: nginx-config
         configMap:
           name: nginx-svc.conf
       - name: nginx-data
-        hostPath:
-          path: /app/data/nginx
+        persistentVolumeClaim:
+          claimName: nginx-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -227,6 +234,7 @@ kubectl -n ingress-nginx port-forward --address 0.0.0.0 svc/ingress-nginx-contro
 - kind_config.yaml에 extraPortMappings의 host 443 : contianer 443 값을 넣어 자동으로 포워딩 되도록 설정하고 싶습니다.
 - 위 설정을 바꾸는것과 더해  ingress의 443포트가 kind control plane의 443번 포트로 매핑해야 합니다.
 
+** end
 이렇게해서 docker container로 관리하던 nginx를 새롭게 구축한 k8s cluster위에 성공적으로 deploy하였습니다. 새롭게 동작하는 nginx는 여전히 https://000namc.xyz/nginx/ 에서 확인 가능합니다! 
 
 

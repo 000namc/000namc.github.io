@@ -62,6 +62,11 @@ spec:
 #+END_SRC
 
 ** deploy gitea
+#+BEGIN_SRC
+kubectl -n gitea apply -f /app/k8s/gitea/deploy.yaml 
+#+END_SRC
+
+
 
 #+BEGIN_SRC
 apiVersion: apps/v1
